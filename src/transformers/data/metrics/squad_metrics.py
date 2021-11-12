@@ -565,10 +565,10 @@ def compute_predictions_logits(
             # predict "" iff the null score - the score of best non-null > threshold
             score_diff = score_null - best_non_null_entry.start_logit - (best_non_null_entry.end_logit)
             scores_diff_json[example.qas_id] = score_diff
-            if score_diff > null_score_diff_threshold:
-                all_predictions[example.qas_id] = ""
-            else:
-                all_predictions[example.qas_id] = best_non_null_entry.text
+#             if score_diff > null_score_diff_threshold:
+#                 all_predictions[example.qas_id] = ""
+#             else:
+            all_predictions[example.qas_id] = best_non_null_entry.text
         all_nbest_json[example.qas_id] = nbest_json
 
     if output_prediction_file:
