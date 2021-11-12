@@ -751,6 +751,7 @@ def compute_predictions_log_probs(
             output["start_log_prob"] = entry.start_log_prob
             output["end_log_prob"] = entry.end_log_prob
             nbest_json.append(output)
+        print(nbest_json)
 
         assert len(nbest_json) >= 1, "No valid predictions"
         assert best_non_null_entry is not None, "No valid predictions"
@@ -773,4 +774,4 @@ def compute_predictions_log_probs(
         with open(output_null_log_odds_file, "w") as writer:
             writer.write(json.dumps(scores_diff_json, indent=4) + "\n")
 
-    return all_predictions
+    return all_predictions, nbest_json
